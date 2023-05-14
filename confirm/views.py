@@ -47,18 +47,21 @@ def get_info(access_token: str):
 
 
 def save_info(t_user_id: int, info):
-    IsuData(
-        t_user_id = t_user_id,
-        sub = info['sub'],
-        gender = info['gender'],
-        name = info['name'],
-        isu = info.get('isu', None),
-        preferred_username = info['preferred_username'],
-        given_name = info['given_name'],
-        middle_name = info.get('middle_name', None),
-        family_name = info['family_name'],
-        email = info['email'],
-        email_verified = info['email_verified']).save()
+    try:
+        IsuData(
+            t_user_id = t_user_id,
+            sub = info['sub'],
+            gender = info['gender'],
+            name = info['name'],
+            isu = info.get('isu', None),
+            preferred_username = info['preferred_username'],
+            given_name = info['given_name'],
+            middle_name = info.get('middle_name', None),
+            family_name = info['family_name'],
+            email = info['email'],
+            email_verified = info['email_verified']).save()
+    except:
+        raise Http404("This user was registered")
 
 
 def index(request):

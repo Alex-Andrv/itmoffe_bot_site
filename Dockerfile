@@ -15,7 +15,5 @@ WORKDIR /itmoffe_bot_site
 # Project initialization:
 RUN poetry config virtualenvs.create false
 RUN poetry install --no-dev
-RUN python manage.py makemigrations  confirm
-RUN python manage.py migrate
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD sleep 40 && python manage.py makemigrations  confirm && python manage.py migrate &&  python manage.py runserver 0.0.0.0:8000

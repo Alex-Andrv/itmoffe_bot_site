@@ -2,7 +2,7 @@ import configparser
 
 VERSION = '0.0.1'
 
-SITE_INI_PATH = 'config/site.ini'
+SITE_INI_PATH = 'config/site_docker.ini'
 
 config = configparser.ConfigParser()
 config.read(SITE_INI_PATH)

@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+from config.general_site_config import DEBUG_FLAG_FROM_INI, DB_NAME, DB_USER, DB_HOST, DB_PORT, DB_PASSWORD, \
+    SECRET_KEY_FROM_INI
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,18 +23,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(*mw#)rcuyrzl0_cn-w316ror(70120fdovr=52#o1rubic4^_'
+SECRET_KEY = SECRET_KEY_FROM_INI
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = DEBUG_FLAG_FROM_INI
 
-ALLOWED_HOSTS = ["51.250.16.213", "rcoffeestudent.itmo.ru", ""]
+ALLOWED_HOSTS = ["51.250.16.213", "rcoffeestudent.itmo.ru", "127.0.0.1"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'confirm.apps.ConfirmConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -74,9 +77,13 @@ WSGI_APPLICATION = 'itmoffe_bot_site.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": DB_NAME,
+        "USER": DB_USER,
+        "PASSWORD": DB_PASSWORD,
+        "HOST": DB_HOST,
+        "PORT": DB_PORT,
     }
 }
 

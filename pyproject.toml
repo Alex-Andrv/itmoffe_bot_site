@@ -10,6 +10,7 @@ python = "^3.11"
 django = "^3.2.9"
 requests = "^2.30.0"
 psycopg2 = "^2.9.6"
+aiogram = "^2.22.1"
 
 
 [build-system]

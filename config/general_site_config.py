@@ -21,3 +21,9 @@ DB_NAME = config['db']['database']
 DB_HOST = config['db']['host']
 DB_USER = config['db']['user']
 DB_PORT = int(config['db']['port'])
+
+
+ALARM_BOT_TOKEN = config['alarm_bot']['token']
+
+CHAT_ID_ALARM = config['alarm_bot']['chat_id']
+CHAT_ID_ALARM_WITH_HR = config['alarm_bot']['chat_id_with_HR']

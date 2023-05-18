@@ -72,8 +72,8 @@ def save_info(t_user_id: int, info):
             family_name=info['family_name'],
             email=info['email'],
             email_verified=info['email_verified']).save()
-    except:
-        loop.run_until_complete(logger.print_error(f"Trouble with user{t_user_id}. Probably he was registered. {info}"))
+    except Exception as e:
+        loop.run_until_complete(logger.print_error(f"Trouble with user{t_user_id}. Probably he was registered. {info}. {e}"))
         raise Http404("Trouble with user. Probably he was registered")
 
 

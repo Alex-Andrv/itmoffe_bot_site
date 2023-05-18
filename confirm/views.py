@@ -18,7 +18,6 @@ def get_required_parameters(request) -> [int, str]:
             raise Http404("Invalid GET parameter: state should be integer")
         return int(request.GET["state"]), request.GET["code"]
     else:
-        loop.run_until_complete(logger.print_error("Expected GET parameters: state, code"))
         raise Http404("Expected GET parameters: state, code")
 
 
@@ -74,7 +73,7 @@ def save_info(t_user_id: int, info):
             email=info['email'],
             email_verified=info['email_verified']).save()
     except:
-        loop.run_until_complete(logger.print_error(f"Trouble with user{t_user_id}. Probably he was registered"))
+        loop.run_until_complete(logger.print_error(f"Trouble with user{t_user_id}. Probably he was registered. {info}"))
         raise Http404("Trouble with user. Probably he was registered")
 
 

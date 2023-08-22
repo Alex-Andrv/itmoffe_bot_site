@@ -5,7 +5,7 @@ VERSION = '0.0.1'
 import os
 print(os.getcwd())
 
-SITE_INI_PATH = './config/site_docker.ini'
+SITE_INI_PATH = './config/site.ini'
 
 config = configparser.ConfigParser()
 config.read(SITE_INI_PATH)

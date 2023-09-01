@@ -1,6 +1,7 @@
 import asyncio
 
 from aiogram import Bot
+from asgiref.sync import async_to_sync
 
 from config.general_site_config import ALARM_BOT_TOKEN, CHAT_ID_ALARM, CHAT_ID_ALARM_WITH_HR
 
@@ -26,6 +27,3 @@ class SiteLogger:
         isu: {isu}
         t_user_id: {t_user_id}
         """)
-
-    def __del__(self):
-        asyncio.run(self.alarm_bot.close())

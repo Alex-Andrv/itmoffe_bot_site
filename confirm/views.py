@@ -119,7 +119,7 @@ def save_info(t_user_id: int, info: dict):
             isu_data = save_isu_data(t_user_id, info, is_student, is_worker)
             if is_worker:
                 work_places = save_work_places(t_user_id, info.get('work_places', []))
-                isu_data.groups.add(*work_places)
+                isu_data.work_places.add(*work_places)
             if is_student:
                 groups = save_groups(t_user_id, info.get('groups', []))
                 isu_data.groups.add(*groups)
